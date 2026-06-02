@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ tour['title'] }}{% endblock %}
+{% block content %}
+  <div class="card">
+    <h1>{{ tour['title'] }}</h1>
+    <p>{{ tour['country'] }} · {{ tour['nights'] }} ночей</p>
+    <p class="price">{{ '%.0f'|format(tour['price']) }} ₽ / чел.</p>
+  </div>
+
+  <div class="card">
+    <h3>Оставить заявку</h3>
+    <form method="post" action="{{ url_for('make_order', tour_id=tour['tour_id']) }}">
+      <input name="client" placeholder="ФИО" required>
+      <input name="phone" placeholder="Телефон" required>
+      <input name="persons" type="number" min="1" value="1" placeholder="Кол-во человек" required>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+{% endblock %}

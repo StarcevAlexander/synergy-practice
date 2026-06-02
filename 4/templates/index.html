@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Каталог туров{% endblock %}
+{% block content %}
+  <h1>Каталог туров</h1>
+  {% for t in tours %}
+    <div class="card">
+      <h3><a href="{{ url_for('tour', tour_id=t['tour_id']) }}">{{ t['title'] }}</a></h3>
+      <p>{{ t['country'] }} · {{ t['nights'] }} ночей</p>
+      <p class="price">{{ '%.0f'|format(t['price']) }} ₽ / чел.</p>
+    </div>
+  {% endfor %}
+{% endblock %}

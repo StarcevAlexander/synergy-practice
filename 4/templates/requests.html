@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Заявки{% endblock %}
+{% block content %}
+  <h1>Заявки клиентов</h1>
+  <div class="card">
+    <table>
+      <tr><th>#</th><th>Тур</th><th>Клиент</th><th>Телефон</th><th>Чел.</th><th>Дата</th></tr>
+      {% for r in requests %}
+        <tr>
+          <td>{{ r['request_id'] }}</td>
+          <td>{{ r['title'] }}</td>
+          <td>{{ r['client'] }}</td>
+          <td>{{ r['phone'] }}</td>
+          <td>{{ r['persons'] }}</td>
+          <td>{{ r['created_at'] }}</td>
+        </tr>
+      {% else %}
+        <tr><td colspan="6">Заявок пока нет.</td></tr>
+      {% endfor %}
+    </table>
+  </div>
+{% endblock %}
